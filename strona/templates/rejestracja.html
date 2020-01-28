@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>	
+	<head>
+		<meta charset="utf-8">
+		<title>Warsztat samochodowy - Rejestracja</title>
+		<link rel="stylesheet" href="static/style.css">
+	</head>
+	<body>
+
+		<!-- nagłowek strony -->
+		<header class="gora">
+			<div class="kontener">
+				<div class="logo">
+					<a href="{{ url_for('login') }}">Strona Główna</a>
+				</div>
+
+				<div class="menu">
+					<ul>
+						<li><a href="{{ url_for('singup') }}">Rejestracja</a></li>
+						<li><a href="{{ url_for('login') }}">Zaloguj się</a></li>
+					</ul>
+				</div>	
+			</div>
+		</header>
+
+		<!-- Logowanie -->
+		<section class="srodek">
+			<div class="kontener">
+				<div class="log">
+					<h1>Zarejestruj</h1>
+					<div class="logowanie">
+						<form action="{{ url_for('singup') }}" method="POST">
+						<label for="login">Login</label><br>
+						<input type="text" name="login" placeholder="Login" id="login" required><br>
+						<label for="password">Hasło</label><br>
+						<input type="password" name="password" placeholder="Password" id="password" required><br>
+						<label for="imie">Imię</label><br>
+						<input type="text" name="imie" placeholder="Imie" id="imie" required><br>
+						<label for="imie">Nazwisko</label><br>
+						<input type="text" name="nazwisko" placeholder="Nazwisko" id="nazwisko" required><br>
+						<label for="imie">Pesel</label><br>
+						<input type="text" name="pesel" placeholder="Pesel" id="pesel" required><br>
+						<label for="imie">Numer telefonu</label><br>
+						<input type="text" name="nr_tel" placeholder="Numer telefonu" id="nr_tel" required><br>
+						<button type="submit">Zarejestruj</button>
+						<p>{{ msg }}</p>
+						</form>
+					</div>	
+				</div>
+			</div>
+		</section>
+
+		<!-- Stopka strony-->
+		<footer class="stopka">
+			<div class="kontener">
+				<p>Warsztat samochodowy</p>
+			</div>
+		</footer>
+	
+	</body>
+</html>

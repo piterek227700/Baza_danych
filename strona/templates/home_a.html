@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>	
+	<head>
+		<meta charset="utf-8">
+		<title>Warsztat samochodowy - Strona Głowna</title>
+		<link rel="stylesheet" href="static/style3.css">
+	</head>
+	<body>
+
+			<!-- nagłowek strony -->
+		<header class="gora">
+			<div class="kontener">
+				<div class="logo">
+					<a href="{{ url_for('admin') }}">Strona Główna</a>
+				</div>
+
+				<div class="menu">
+					<ul>
+						<li><a href="{{ url_for('login') }}">Wyloguj</a></li>
+					</ul>
+				</div>	
+			</div>
+		</header>
+
+		<section class='srodek'>
+			
+			<div class="dane_t1">
+				<form action="{{ url_for('admin') }}" method="GET">
+					<label>Lista pracowników</label><br>
+					<select name="multiple" multiple="multiple">
+						{% for row in data[0] %}
+						<option>ID:{{ row[0] }} {{ row[1] }} {{ row[2] }} Specjalizacja: {{ row[3] }}</option>
+						{% endfor %}
+					</select>	
+			</div>
+
+			<div class="dane_t2">
+				<form action="{{ url_for('admin') }}" method="GET">
+					<label>Lista klientów</label><br>
+					<select name="multiple" multiple="multiple">
+						{% for row in data[1] %}
+						<option>ID: {{ row[0] }} {{ row[1] }} {{ row[2] }} PESEL: {{ row[3] }} Nr.tel: {{ row[4] }} </option>
+						{% endfor %}
+					</select>	
+				
+
+			</div>
+
+			<div class="dane_t3">
+				
+				<p>Lista wizyt chronologicznie</p>
+
+
+			</div>
+
+
+
+
+
+
+		</section>
+
+
+
+
+
+				<!-- Stopka strony-->
+		<footer class="stopka">
+			<div class="kontener">
+				<p>Warsztat samochodowy</p>
+			</div>
+		</footer>
+	
+	</body>
+</html>

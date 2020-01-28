@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Warsztat samochodowy - Strona Głowna</title>
+		<link rel="stylesheet" href="static/style2.css">
+	</head>
+		<body>
+
+			<!-- nagłowek strony -->
+		<header class="gora">
+			<div class="kontener">
+				<div class="logo">
+					<a href="{{ url_for('home') }}">Strona Główna</a>
+				</div>
+
+				<div class="menu">
+					<ul>
+						<li><a href="{{ url_for('login') }}">Wyloguj</a></li>
+					</ul>
+				</div>	
+			</div>
+		</header>
+		
+		<section class='srodek'>
+			<div class='dane_l'>
+				<h2>Twoje zarejestrowane samochody</h2>
+				<div class="lewa_kol">
+				<form action="{{ url_for('home') }}" method="GET">
+					<label>Samochody</label><br>
+					<select name="multiple" multiple="multiple">
+						{% for row in data[2] %}
+						<option>{{ row[0] }} {{ row[1] }} {{ row[2] }} {{ row[3] }} {{ row[4] }} {{ row[6] }} {{ row[7] }}</option>
+						{% endfor %}
+					</select><br>	
+				</form>
+				</div>
+				<div class="prawa_kol">
+					<form action="{{ url_for('home') }}" method="POST">
+						<label for="Samochod">Wybierz samochód id</label><br>
+						<input type="text" name="id_car" placeholder="id_car" id="id_car" maxlength="20" size="12"><br>
+						<button type="submit">Usuń</button>
+					</form>
+					
+				</div>
+				<div class='linia'></div>
+				<div class="prawa_kol2">
+					<form action="{{ url_for('home') }}" method="POST">
+						<input type="text" name="marka" placeholder="Marka" id="marka"><br>
+						<input type="text" name="model" placeholder="Model" id="model"><br>
+						<input type="text" name="wersja" placeholder="Wersja" id="wersja"><br>
+						<input type="text" name="rok" placeholder="Rok produkcji" id="rok"><br>
+						<input type="text" name="vin" placeholder="Vin" id="vin"><br>
+						<input type="text" name="silnik" placeholder="Pojemność silnika" id="silnik"><br>
+						<input type="text" name="paliwo" placeholder="Paliwo" id="paliwo"><br>
+						<input type="text" name="przebieg" placeholder="Przebieg np. 120000" id="przebieg"><br>
+						<button type="submit">Dodaj</button>	
+					</form>
+
+					
+
+				</div>
+
+				<!--{% for row in data[2] %}
+				<h3>- {{ row[1] }} {{ row[2] }} {{ row[3] }} {{ row[4] }} {{ row[6] }} {{ row[7] }}</h3>
+				{% endfor %} -->
+
+			</div>
+
+			<div class='dane_p'>
+				<h2>Twoje dane osobowe</h2>
+				<div class="dane_po">
+						{% for row in data[0] %}
+						<h3> {{ row[1] }} {{ row[2] }}</h3>
+						<h3>Pesel: {{ row[3] }}</h3>
+						<h3>Nr telefonu: {{ row[4] }}</h3>
+						{% endfor %}
+						{% for row in data[1] %}
+						<h3>Miasto: {{ row[1] }}</h3>
+						<h3>Ulica: {{ row[2] }}</h3>
+						<h3>Kod Pocztowy: {{ row[3] }}</h3>
+						<h3>Nr domu: {{ row[4] }}</h3>
+						{% endfor %}
+				</div>
+				<div class="dane_lo">
+					<form action="{{ url_for('home') }}" method="POST">
+						<input type="text" name="nr_tel_p" placeholder="Numer tel" id="nr_tel_p"><br>
+						<input type="text" name="miasto" placeholder="miasto" id="miasto"><br>
+						<input type="text" name="ulica" placeholder="ulica" id="ulica"><br>
+						<input type="text" name="kod_pocztowy" placeholder="np. 98659" id="kod_pocztowy"><br>
+						<input type="text" name="nr_domu" placeholder="nr domu" id="nr_domu"><br>
+						<button type="submit">Aktualizuj</button>
+					</form>
+				</div>		
+			</div>
+				
+				<div class="dane_lp">
+					<h2>Umówienie na wizytę</h2>
+					
+				</div>
+
+				<div class="dane_pp">
+					<h2>Wizyty</h2>
+					{% for row in data[3] %}
+				<h3>- Status: {{ row[0] }}<br> Data: {{ row[1] }} Koszt: {{ row[2] }} Marka: {{ row[3] }} Model: {{ row[4] }}<br></h3>
+					{% endfor %}
+				</div>
+		</section>
+
+		</body>
+</html>

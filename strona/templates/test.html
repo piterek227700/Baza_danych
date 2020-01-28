@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>	
+	<head>
+		<meta charset="utf-8">
+		<title>Warsztat samochodowy - Logowanie</title>
+	</head>
+	<body>
+		<p>test bazy danych</p>
+		<p>
+			{% for row in data %}
+			<h2>login:{{ row[0] }}</h2><br>
+			<h2>hasło:{{ row[1] }}</h2>
+			{% endfor %}
+		</p>
+	</body>
+</html>
